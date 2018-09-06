@@ -10,9 +10,13 @@ void setup() {
 }
 
 void loop() {
-  
   capture_and_log_joystick();
+  update_pin_base_on_joystick();
+  log_pin_index();
+}
 
+void update_pin_base_on_joystick()
+{
   if(x == 0)
   {
     set_next_pin_on();
@@ -22,7 +26,10 @@ void loop() {
   {
     set_last_pin_off();
   }
+}
 
+void log_pin_index()
+{
    Serial.print("\n");
    Serial.print("pinIndex :");
    Serial.println(pinIndex);
@@ -32,7 +39,7 @@ void capture_and_log_joystick()
 {
   x = analogRead(A0);  
   y = analogRead(A1);
-  
+  delay(250);
   Serial.print("\n"); 
   Serial.print("X-axis: ");
   Serial.print(x);
